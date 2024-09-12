@@ -28,6 +28,8 @@ func (user *User) Create(map[string]interface{}) string {
 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	user.Password = string(hashedPassword)
 
+	GetDB().Create(&user)
+
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, &Token{UserId: user.ID})
 	tokenString, _ := token.SignedString([]byte(os.Getenv("SECRET")))
 	user.Token = tokenString
