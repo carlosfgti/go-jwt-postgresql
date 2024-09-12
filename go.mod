@@ -9,6 +9,8 @@ require (
 	golang.org/x/crypto v0.27.0
 )
 
+require github.com/lib/pq v1.10.9 // indirect
+
 require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/joho/godotenv v1.5.1
